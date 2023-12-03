@@ -7,11 +7,11 @@ gears = {}
 parts = {}
 
 def generate_coords(x,y, xmax, ymax):
-  coords = []
-  for i in range(max(x-1, 0), min(x+1, xmax) + 1):
-    for j in range(max(y-1, 0), min(y+1, ymax) + 1):
-      if not (i == x and j == y):
-        coords.append((i,j))
+  coords = [
+      (i,j) for i in range(max(x-1, 0), min(x+1, xmax) + 1)
+        for j in range(max(y-1, 0), min(y+1, ymax) + 1)
+          if not (i == x and j == y)
+  ]
   return coords
 
 def find_gear(cn, ln, num_characters, num_lines, part_number):
